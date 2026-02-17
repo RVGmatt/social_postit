@@ -7,7 +7,6 @@ const PORT = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 
-// Render pagina /post
 app.get('/post', (req, res) => {
     res.send(`
         <form method="POST" action="/post">
@@ -16,8 +15,6 @@ app.get('/post', (req, res) => {
         </form>
     `);
 });
-
-// Salvataggio su post.json
 app.post('/post', (req, res) => {
     const filePath = path.join(__dirname, '/jsons/post.json');
     let data = [];
@@ -38,7 +35,6 @@ app.listen(PORT, () => {
 });
 
 
-// Fallback (404)
 app.use((req, res) => {
     res.status(404).send("<h1>404 - Pagina non trovata</h1>");
 });
